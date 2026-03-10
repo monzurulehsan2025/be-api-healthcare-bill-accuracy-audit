@@ -1,9 +1,11 @@
 import random
 import uuid
+from datetime import datetime
 from typing import List
 from models import (
     ClaimIngestion, AuditResponse, VulnerabilityIssue, 
-    VulnerabilitySeverity, DenialAnalysisRequest, DenialResolutionRecommendation
+    VulnerabilitySeverity, DenialAnalysisRequest, DenialResolutionRecommendation,
+    RevenueOptimizationRequest, RevenueOptimizationResponse, OptimizationStrategy
 )
 
 class AIOrchestrationService:
