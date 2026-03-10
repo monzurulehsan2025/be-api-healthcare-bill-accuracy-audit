@@ -1,5 +1,8 @@
 from fastapi import FastAPI, HTTPException, Depends
-from models import ClaimIngestion, AuditResponse, DenialAnalysisRequest, DenialResolutionRecommendation
+from models import (
+    ClaimIngestion, AuditResponse, DenialAnalysisRequest, 
+    DenialResolutionRecommendation, RevenueOptimizationRequest, RevenueOptimizationResponse
+)
 from services import AIOrchestrationService
 from typing import Dict, Any
 
@@ -21,7 +24,8 @@ async def root():
         "features": [
             "Real-time Pre-bill Audit",
             "Automated Denial Resolution",
-            "EHR Integration Data Ingestion"
+            "EHR Integration Data Ingestion",
+            "Revenue Optimization Analysis"
         ]
     }
 
@@ -69,6 +73,22 @@ async def analyze_denial(request: DenialAnalysisRequest) -> DenialResolutionReco
         return recommendation
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Denial analysis failed: {str(e)}")
+
+# -----------------
+# API 4: Revenue Optimization Analysis
+# -----------------
+@app.post("/api/v1/revenue/optimize", response_model=RevenueOptimizationResponse)
+async def analyze_revenue_optimization(request: RevenueOptimizationRequest) -> RevenueOptimizationResponse:
+    """
+    Identifies revenue leaks and optimization opportunities based on facility performance data.
+    Provides actionable strategies to maximize healthcare revenue.
+    """
+    try:
+        optimization_plan = await AIOrchestrationService.identify_revenue_opportunities(request)
+        return optimization_plan
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Revenue analysis failed: {str(e)}")
+
 
 if __name__ == "__main__":
     import uvicorn

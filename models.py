@@ -65,3 +65,22 @@ class DenialResolutionRecommendation(BaseModel):
     success_probability: float
     deployment_automation_status: str = "Awaiting Approval"
     resolution_steps: List[str]
+
+class RevenueOptimizationRequest(BaseModel):
+    facility_id: str
+    start_date: date
+    end_date: date
+    department_focus: Optional[str] = "All"
+
+class OptimizationStrategy(BaseModel):
+    area: str
+    estimated_revenue_increase: float
+    confidence_score: float
+    description: str
+
+class RevenueOptimizationResponse(BaseModel):
+    facility_id: str
+    total_potential_gain: float
+    strategies: List[OptimizationStrategy]
+    report_timestamp: datetime
+
