@@ -6,6 +6,7 @@ This is a sample Python backend for **AIOrc**, an AI Orchestration platform for 
 - **Data Ingestion**: Staging hospital and patient data into the Medallion architecture (Bronze layer).
 - **Pre-bill Audit**: Real-time AI vulnerability detection before claim submission to payers.
 - **Denial Resolution**: AI-driven analysis of denied claims with automated resolution workflows (Temporal-ready).
+- **Revenue Optimization**: Identify revenue leaks and actionable strategies to maximize outcomes.
 
 ## Tech Stack
 - **FastAPI**: Modern, high-performance web framework.
